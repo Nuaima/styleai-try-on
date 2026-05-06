@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero.jpg";
 
 export const Hero = () => {
@@ -18,19 +19,19 @@ export const Hero = () => {
             Upload a photo, choose your tee, and see it on you — instantly.
           </p>
           <div className="flex flex-wrap gap-4">
-            <a
-              href="#tryon"
+            <Link
+              to="/try-on"
               className="group inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 font-medium text-primary-foreground shadow-soft transition-smooth hover:translate-y-[-2px] hover:shadow-card"
             >
               Try On Now
               <span className="transition-smooth group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href="#collection"
+            </Link>
+            <Link
+              to="/collection"
               className="inline-flex items-center gap-2 rounded-sm border border-primary/30 px-7 py-3.5 font-medium text-foreground transition-smooth hover:bg-primary/5"
             >
               Browse Collection
-            </a>
+            </Link>
           </div>
         </div>
         <div className="relative">

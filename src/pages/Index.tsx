@@ -1,13 +1,13 @@
-import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { ProductCard } from "@/components/ProductCard";
-import { TryOnStudio } from "@/components/TryOnStudio";
-import { products, Product } from "@/data/products";
+import { products } from "@/data/products";
 import { Sparkles, Camera, ShirtIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
-  const [selected, setSelected] = useState<Product | null>(null);
+  const featured = products.slice(0, 4);
 
   return (
     <div className="min-h-screen bg-background">
@@ -15,7 +15,6 @@ const Index = () => {
       <main>
         <Hero />
 
-        {/* HOW IT WORKS */}
         <section className="border-y border-border/50 bg-card py-16">
           <div className="container grid gap-8 md:grid-cols-3">
             {[
@@ -34,35 +33,35 @@ const Index = () => {
           </div>
         </section>
 
-        {/* COLLECTION */}
-        <section id="collection" className="py-20 lg:py-28">
+        <section className="py-20 lg:py-28">
           <div className="container">
             <div className="mb-12 flex items-end justify-between gap-4">
               <div>
                 <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
-                  ✦ The Collection
+                  ✦ Featured
                 </span>
                 <h2 className="mt-3 font-display text-4xl md:text-5xl">
-                  Tees, in orbit.
+                  This week's drops
                 </h2>
               </div>
-              <p className="hidden max-w-sm text-muted-foreground md:block">
-                Ten signatures. Heavyweight cotton. Designed in-house, printed with care.
-              </p>
+              <Link to="/collection" className="hidden text-sm font-medium text-accent underline-offset-4 hover:underline md:inline">
+                View all →
+              </Link>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {products.map((p) => (
-                <ProductCard key={p.id} product={p} onTryOn={setSelected} />
-              ))}
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {featured.map((p) => <ProductCard key={p.id} product={p} />)}
+            </div>
+
+            <div className="mt-12 text-center">
+              <Link to="/collection" className="inline-flex items-center gap-2 rounded-sm border border-primary/30 px-7 py-3.5 font-medium transition-smooth hover:bg-primary/5">
+                Browse the full collection →
+              </Link>
             </div>
           </div>
         </section>
 
-        <TryOnStudio initialProduct={selected} />
-
-        {/* ABOUT */}
-        <section id="about" className="bg-primary py-20 text-primary-foreground">
+        <section className="bg-primary py-20 text-primary-foreground">
           <div className="container max-w-3xl text-center">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
               ✦ About Saturn
@@ -75,15 +74,14 @@ const Index = () => {
               for those who treat clothing like a quiet rebellion. Every piece is printed
               on premium 240gsm cotton, made to outlast the season.
             </p>
+            <Link to="/try-on" className="mt-8 inline-flex items-center gap-2 rounded-sm bg-accent px-7 py-3.5 font-medium text-accent-foreground transition-smooth hover:bg-accent/90">
+              <Sparkles className="h-4 w-4" />
+              Try on a Saturn tee
+            </Link>
           </div>
         </section>
 
-        <footer className="border-t border-border/40 bg-background py-10">
-          <div className="container flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
-            <p>© {new Date().getFullYear()} Saturn. Crafted in orbit.</p>
-            <p>Free shipping across Pakistan on orders over Rs. 5,000.</p>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </div>
   );

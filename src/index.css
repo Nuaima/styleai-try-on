@@ -114,5 +114,33 @@
   .bg-gradient-gold { background-image: var(--gradient-gold); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-gold { box-shadow: var(--shadow-gold); }
   .transition-smooth { transition: all 0.3s var(--transition-smooth); }
+
+  /* Starfield — subtle twinkling cosmic dust */
+  .bg-starfield {
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, hsl(var(--foreground) / 0.7), transparent 50%),
+      radial-gradient(1px 1px at 28% 62%, hsl(var(--foreground) / 0.5), transparent 50%),
+      radial-gradient(1.5px 1.5px at 42% 28%, hsl(var(--accent) / 0.8), transparent 50%),
+      radial-gradient(1px 1px at 58% 78%, hsl(var(--foreground) / 0.6), transparent 50%),
+      radial-gradient(1px 1px at 72% 12%, hsl(var(--foreground) / 0.5), transparent 50%),
+      radial-gradient(1.5px 1.5px at 84% 48%, hsl(var(--accent) / 0.7), transparent 50%),
+      radial-gradient(1px 1px at 92% 82%, hsl(var(--foreground) / 0.6), transparent 50%),
+      radial-gradient(1px 1px at 8% 88%, hsl(var(--foreground) / 0.4), transparent 50%);
+    background-size: 600px 600px;
+  }
+
+  @keyframes orbit-spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  .animate-orbit-slow { animation: orbit-spin 60s linear infinite; }
+  .animate-orbit-med  { animation: orbit-spin 40s linear infinite reverse; }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 1; }
+  }
+  .animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
 }

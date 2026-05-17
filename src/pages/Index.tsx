@@ -122,7 +122,7 @@ const Index = () => {
                       add(o, "M", 1);
                       toast({ title: "Added to cart", description: `${o.name} · Size M` });
                     }}
-                    className="mt-4 w-full rounded-full bg-foreground py-3 text-[10px] uppercase tracking-[0.3em] text-background transition-smooth hover:opacity-90"
+                    className="mt-4 w-full translate-y-2 rounded-full bg-foreground py-3 text-[10px] uppercase tracking-[0.3em] text-background opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:opacity-90"
                   >
                     Add to cart
                   </button>

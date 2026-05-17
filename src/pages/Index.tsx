@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { products, formatPKR } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { toast } from "@/hooks/use-toast";
-import heroImg from "@/assets/hero.jpg";
+import saturnHero from "@/assets/saturn-hero.jpg";
 
 const Index = () => {
   const featured = products.slice(0, 6);
@@ -16,28 +16,29 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main>
-        {/* HERO */}
-        <section className="relative overflow-hidden bg-gradient-hero">
-          {/* Orbit rings */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 -z-0 -translate-x-1/2 -translate-y-1/2">
-            <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/30" />
-            <div className="absolute left-1/2 top-1/2 h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/20" />
-            <div className="absolute left-1/2 top-1/2 h-[1040px] w-[1040px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/10" />
-            <div className="absolute left-1/2 top-1/2 h-[1320px] w-[1320px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/[0.06]" />
-          </div>
+        {/* HERO with Saturn background */}
+        <section className="relative min-h-screen overflow-hidden">
+          <img
+            src={saturnHero}
+            alt="Saturn planet with rings"
+            width={1920}
+            height={1280}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
 
-          <div className="container relative z-10 flex flex-col items-center py-28 text-center lg:py-40">
-            <span className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-background/60 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.3em] text-accent-foreground backdrop-blur">
+          <div className="container relative z-10 flex min-h-screen flex-col items-center justify-center pt-32 pb-20 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/70 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.3em] backdrop-blur">
               <Sparkles className="h-3 w-3 text-accent" /> AI Virtual Try-On
             </span>
 
-            <h1 className="mt-8 max-w-4xl text-balance font-display text-6xl font-semibold leading-[0.95] md:text-7xl lg:text-[8rem]">
+            <h1 className="mt-8 max-w-5xl text-balance font-display text-7xl font-normal leading-[0.95] md:text-8xl lg:text-[9rem]">
               Wear Your
               <br />
               <span className="italic text-accent">Orbit.</span>
             </h1>
 
-            <p className="mt-8 max-w-xl text-base text-muted-foreground md:text-lg">
+            <p className="mt-8 max-w-xl text-base text-foreground/80 md:text-lg">
               A celestial wardrobe inspired by the rings of Saturn. Slip into a
               new universe — try every piece on with AI before it lands in your orbit.
             </p>
@@ -45,26 +46,17 @@ const Index = () => {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/try-on"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-xs font-medium uppercase tracking-[0.25em] text-primary-foreground shadow-soft transition-smooth hover:translate-y-[-2px]"
+                className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-xs font-medium uppercase tracking-[0.25em] text-primary-foreground shadow-soft transition-smooth hover:translate-y-[-2px]"
               >
                 Try It On
                 <ArrowRight className="h-4 w-4 transition-smooth group-hover:translate-x-1" />
               </Link>
               <Link
                 to="/collection"
-                className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/40 px-7 py-3.5 text-xs font-medium uppercase tracking-[0.25em] text-foreground backdrop-blur transition-smooth hover:bg-primary/5"
+                className="inline-flex items-center gap-2 rounded-full border border-foreground/30 bg-background/60 px-8 py-4 text-xs font-medium uppercase tracking-[0.25em] backdrop-blur transition-smooth hover:bg-background/80"
               >
                 Explore Saturn
               </Link>
-            </div>
-
-            <div className="relative mt-16 w-full max-w-2xl">
-              <div className="absolute -inset-6 rounded-full bg-gradient-gold opacity-30 blur-3xl" />
-              <img
-                src={heroImg}
-                alt="Saturn signature tee, hero"
-                className="relative mx-auto aspect-[4/5] w-full max-w-md rounded-sm object-cover shadow-soft"
-              />
             </div>
           </div>
         </section>
@@ -77,32 +69,33 @@ const Index = () => {
                 <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-accent">
                   ✦ Drop 01 · Summer Orbit
                 </span>
-                <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">
+                <h2 className="mt-4 font-display text-5xl md:text-6xl">
                   Featured Collection
                 </h2>
               </div>
               <Link
                 to="/collection"
-                className="hidden shrink-0 text-xs font-medium uppercase tracking-[0.25em] text-accent underline-offset-4 hover:underline md:inline"
+                className="hidden shrink-0 items-center gap-1 text-xs font-medium uppercase tracking-[0.25em] text-accent underline-offset-4 hover:underline md:inline-flex"
               >
-                View all →
+                View all <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {featured.map((o) => (
                 <div key={o.id} className="group flex flex-col">
                   <Link
                     to={`/product/${o.id}`}
-                    className="relative block aspect-[4/5] overflow-hidden rounded-sm bg-muted"
+                    className="relative block aspect-square overflow-hidden rounded-3xl"
+                    style={{ backgroundColor: "hsl(225 75% 38%)" }}
                   >
                     <img
                       src={o.image}
                       alt={o.name}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-smooth group-hover:scale-[1.04]"
+                      className="h-full w-full object-contain p-6 transition-smooth group-hover:scale-[1.04]"
                     />
-                    <span className="absolute left-3 top-3 rounded-full bg-background/85 px-3 py-1 text-[10px] font-medium uppercase tracking-widest backdrop-blur">
+                    <span className="absolute left-4 top-4 rounded-full bg-background/85 px-3 py-1 text-[10px] font-medium uppercase tracking-widest backdrop-blur">
                       {o.category}
                     </span>
                   </Link>
@@ -122,27 +115,18 @@ const Index = () => {
                       add(o, "M", 1);
                       toast({ title: "Added to cart", description: `${o.name} · Size M` });
                     }}
-                    className="mt-4 w-full translate-y-2 rounded-full bg-foreground py-3 text-[10px] uppercase tracking-[0.3em] text-background opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+                    className="mt-4 w-full rounded-full bg-foreground py-3 text-[10px] uppercase tracking-[0.3em] text-background transition-smooth hover:opacity-90"
                   >
                     Add to cart
                   </button>
                 </div>
               ))}
             </div>
-
-            <div className="mt-16 text-center md:hidden">
-              <Link
-                to="/collection"
-                className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-7 py-3.5 text-xs font-medium uppercase tracking-[0.25em] transition-smooth hover:bg-primary/5"
-              >
-                Browse the full collection →
-              </Link>
-            </div>
           </div>
         </section>
 
         {/* STORY TEASER */}
-        <section className="border-t border-border/50 bg-card py-24 lg:py-32">
+        <section id="story" className="border-t border-border/50 bg-card py-24 lg:py-32">
           <div className="container grid items-center gap-16 lg:grid-cols-2">
             <div>
               <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-accent">

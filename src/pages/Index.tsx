@@ -27,6 +27,13 @@ const Index = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
 
+          {/* Orbit rings */}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2">
+            <div className="h-[80vmin] w-[80vmin] rounded-full border border-accent/20" />
+            <div className="absolute inset-[8%] rounded-full border border-accent/15" />
+            <div className="absolute inset-[18%] rounded-full border border-accent/10" />
+          </div>
+
           <div className="container relative z-10 flex min-h-screen flex-col items-center justify-center pt-32 pb-20 text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/70 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.3em] backdrop-blur">
               <Sparkles className="h-3 w-3 text-accent" /> AI Virtual Try-On

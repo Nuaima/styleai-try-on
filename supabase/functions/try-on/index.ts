@@ -24,10 +24,11 @@ serve(async (req) => {
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY not configured");
 
-    const prompt = `You are a virtual try-on assistant. Take the person from the FIRST image and dress them in the t-shirt shown in the SECOND image (${garmentName ?? "t-shirt"}). 
-Replace whatever top they are currently wearing with this exact t-shirt — preserving the t-shirt's color, graphic print, text, and overall design exactly as shown in the second image. 
-Keep the person's face, hair, skin tone, body proportions, pose, and the original background completely unchanged. The t-shirt should fit naturally with realistic folds, lighting, and shadows that match the original photo. 
-Output only the final photorealistic image of the person wearing this t-shirt.`;
+    const prompt = `You are a virtual try-on assistant. Take the person from the FIRST image and dress them in the garment shown in the SECOND image (${garmentName ?? "garment"}).
+Replace their current outfit with this exact garment — preserving its color, print, text, embroidery, fabric texture, silhouette, and overall design exactly as shown in the second image. If the second image shows a full outfit (kurta with shalwar/palazzo/dupatta, dress, suit, etc.), dress the person in the complete outfit.
+Render the person as a FULL-BODY shot from head to toe. If the original photo is cropped (waist-up, half-body, etc.), naturally extend the frame downward to show the full body, legs, and feet with realistic proportions, footwear, and a background that seamlessly continues the original scene.
+Keep the person's face, hair, skin tone, body proportions, pose, and the original background style completely unchanged. The garment should fit naturally with realistic folds, drape, lighting, and shadows that match the original photo.
+Output only the final photorealistic full-body image of the person wearing this outfit.`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",

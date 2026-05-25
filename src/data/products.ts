@@ -8,6 +8,9 @@ import tee7 from "@/assets/tees/7.png";
 import tee8 from "@/assets/tees/8.png";
 import tee9 from "@/assets/tees/9.png";
 import tee10 from "@/assets/tees/10.png";
+import tee11 from "@/assets/tees/11.png";
+import tee12 from "@/assets/tees/12.png";
+import tee13 from "@/assets/tees/13.png";
 
 export type Product = {
   id: string;
@@ -39,6 +42,12 @@ export const products: Product[] = [
     description: "Hand-painted character art with a manifesto." },
   { id: "essential-black", name: "Essential Black Tee", category: "Basics", price: 2400, image: tee10,
     description: "The everyday foundation. Heavyweight cotton." },
+  { id: "golden-chikankari-kurta", name: "Golden Chikankari Kurta", category: "Kurta", price: 6500, image: tee11,
+    description: "Sand-gold chikankari kurta with intricate white embroidery and tassel hem." },
+  { id: "rose-embroidered-suit", name: "Rose Embroidered Suit", category: "Suit", price: 7200, image: tee12,
+    description: "Dusty rose kurta with paisley embroidery, paired with shalwar and printed dupatta." },
+  { id: "ivory-grace-suit", name: "Ivory Grace Suit", category: "Suit", price: 7800, image: tee13,
+    description: "Sleeveless ivory kurta with scalloped hem, palazzo, and floral chiffon dupatta." },
 ];
 
 export const formatPKR = (n: number) =>
